@@ -1,6 +1,20 @@
 const router = require('express').Router();
 const { Project } = require('../../models');
 
+router.get('/project/:id', async (req, res) => {
+  try {
+    const projectData = await Project.findByPk(req.params.id);
+      if(!projectData) {
+        res.status(404).json({message: 'No project with this id!'});
+        return;
+      }
+    const project = projectData.get({plain: true});
+    res.render('project/id', project);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 router.post('/', async (req, res) => {
   try {
     const newProject = await Project.create({
