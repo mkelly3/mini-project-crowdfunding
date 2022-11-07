@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crowdfuning</title>
+  <link rel="stylesheet" type="text/css" href="/css/jass.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+      <header class="header">
+        <div class = "page-title-container">
+          <h1><i class="page-title"></i>Crowdfuning</h1>
+          </div>
+          <nav class="nav">
+            <a class="link" href="/">HOME</a>
+            <a class="link" href="/dashboard">DASHBOARD</a>
+            {{#if loggedIn}}
+            <a class="link" href="/" id="logout">LOGOUT</a>
+            {{else}}
+            <a class="link" href="/login">LOGIN</a>
+            {{/if}}
+          </nav>          
+      </header>
+ 
+    <main>
+      <hr/>
+      {{{ body }}}
+    </main>
+  </div>
+
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+
+</body>
+
+</html>
