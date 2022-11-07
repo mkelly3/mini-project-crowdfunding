@@ -1,5 +1,16 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const withAuth = require('../utils/auth');
+
+router.get('/profile', withAuth, async (req, res) => {
+  try{
+    const userData = await User.findOne({
+      where: {email: req.session.email}
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 router.post('/', async (req, res) => {
   try {
